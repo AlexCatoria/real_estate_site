@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<!-- jQuery -->
+	<script src="js/jquery.min.js"></script>
+
+	<!-- Smartmenus CSS -->
+	<link href="css/sm-core-css.css" rel="stylesheet">
+
+	<!-- Smartmenus JS -->
+	<script src="js/jquery.smartmenus.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Агентство недвижимости "Крыша"</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+</head>
+<body>
+    <header>
+        <h1>Агентство недвижимости "Крыша"</h1>
+        <nav class="navbar">
+        <div class="container">
+            <ul id="main-menu">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="catalog.html">Каталог</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+				<li><a href="registration.html">Регистрация</a></li>
+            </ul>
+        </div>
+    </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h2>Добро пожаловать!</h2>
+            <p>Мы помогаем найти дом вашей мечты!</p>
+            <p>Более 10 лет на рынке недвижимости.</p>
+        </section>
+
+        <section class="form-section">
+            <h3>Оставьте заявку</h3>
+            <form>
+                <label for="name">Ваше имя:</label>
+                <input type="text" id="name" name="name" required><br>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br>
+
+                <label for="phone">Телефон:</label>
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}" required><br>
+
+                <label for="message">Сообщение:</label>
+                <textarea name="message" id="message" rows="4" cols="50" required></textarea><br>
+
+                <button type="submit">Отправить</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Агентство недвижимости "Крыша"</p>
+    </footer>
+
+
+    <script type="module">
+        import './components/property-card.js';
+    </script>
+
+    <link rel="manifest" href="manifest.json">
+<script>
+	$(document).ready(function() {
+		$('#main-menu').smartmenus({
+			subMenusSubOffsetX: 1,
+			subMenusSubOffsetY: -8,
+			effect: 'slide',
+			animationDuration: 200,
+			markCurrentItem: true,
+			autoCollapseMode: 'all'
+		});
+	});
+</script>
+</body>
+</html>

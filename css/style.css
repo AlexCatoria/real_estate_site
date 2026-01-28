@@ -1,0 +1,255 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.hero {
+    padding: 40px;
+    background: #f8f9fa;
+}
+
+.form-section {
+    padding: 20px;
+}
+
+form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input, textarea, button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+}
+
+button {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+}
+
+.property-card {
+    max-width: 300px; /* Максимальный размер карточки */
+    margin: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.property-card img {
+    width: 100%; /* Занимает всю ширину карточки */
+    height: auto;
+    display: block;
+    max-height: 200px; /* Ограничиваем высоту изображения */
+    object-fit: cover; /* Сохраняем пропорции */
+    transition: transform 0.3s;
+}
+
+.property-card:hover img {
+    transform: scale(1.05); /* Легкий зум при наведении */
+}
+
+.property-info {
+    padding: 15px;
+}
+
+.property-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+ .property-list {
+ grid-template-columns: 1fr;
+ }
+}
+
+.registration-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.error-messages {
+    color: #dc3545;
+    margin-top: 20px;
+}
+
+.error-messages p {
+    margin-bottom: 5px;
+}
+
+.map img {
+    width: 40%;
+    max-width: 50%;
+    height: 400;
+    display: block;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+
+/* Общие стили для меню */
+
+#main-menu {
+ list-style: none;
+ display: flex;
+ gap: 20px;
+ margin-left: 40px;
+ opacity: 1;
+}
+
+#main-menu li {
+ position: relative;
+ opacity: 1;
+}
+
+#main-menu a {
+ text-decoration: none;
+ color: #f7f7f7;
+ font-size: 16px;
+ padding: 10px 15px;
+ display: block;
+ opacity: 1;
+}
+
+#main-menu a:hover {
+ background-color: #4461c1;
+}
+
+/* Стили для подменю */
+#main-menu .submenu {
+ display: none;
+ position: absolute;
+ min-width: 160px;
+ z-index: 1000;
+ opacity: 1;
+}
+
+#main-menu .submenu a {
+ padding: 8px 12px;
+ opacity: 1;
+}
+
+#main-menu li:hover > .submenu {
+ display: block;
+}
+
+
+/* Стили для сообщений валидации */
+.form-group .validationEngineMessage {
+    margin-top: 5px;
+    font-size: 12px;
+    color: #ff0000;
+}
+
+.form-group input.validate[wrong] {
+    border-color: #ff0000;
+}
+
+.form-group input.validate[ok] {
+    border-color: #00ff00;
+}
+
+
+/* Стили для полей ввода */
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+/* Стили для сообщений об ошибках */
+.form-group .formError {
+    position: absolute;
+    background: #f2dede;
+    color: #a94442;
+    padding: 5px;
+    border-radius: 4px;
+    margin-top: 5px;
+}
+
+/* Стили для кнопок */
+.form-group button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+
+/* Стили для состояний полей */
+.form-group input.validatewrong {
+    border-color: #dc3545;
+}
+
+.form-group input.validateok {
+    border-color: #28a745;
+}

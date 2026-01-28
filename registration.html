@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <!-- jQuery -->
+    <script src="js/jquery.min.js"></script>
+    
+    <!-- Smartmenus CSS -->
+    <link href="css/sm-core-css.css" rel="stylesheet">
+    
+    <!-- Валидация CSS -->
+    <link rel="stylesheet" href="css/validationEngine.jquery.css">
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация | Агентство недвижимости "Крыша"</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Агентство недвижимости "Крыша"</h1>
+        <nav class="navbar">
+        <div class="container">
+            <ul id="main-menu">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="catalog.html">Каталог</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+				<li><a href="registration.html">Регистрация</a></li>
+            </ul>
+        </div>
+    </nav>
+    </header>
+
+	<hr>
+	
+    <main>
+        <section class="registration-form">
+            <h2>Регистрация нового пользователя</h2>
+            
+		<form id="registrationForm" method="post">
+			<div class="form-group">
+				<label for="login">Логин:</label>
+				<input type="text" id="login" name="login" 
+					   class="validate[required,custom[onlyLetter],minSize[3],maxSize[30]]"
+					   placeholder="Только латинские буквы">
+					   
+			</div>
+			
+			<div class="form-group">
+				<label for="password">Пароль:</label>
+				<input type="password" id="password" name="password" 
+					   class="validate[required,minSize[3],maxSize[10]]"
+					   placeholder="3-10 символов">
+			</div>
+			
+			<div class="form-group">
+				<button type="submit">Зарегистрироваться</button>
+			</div>
+		</form>
+        </section>
+    </main>
+
+	<hr>
+	
+    <footer>
+        <p>© 2025 Агентство недвижимости "Крыша"</p>
+    </footer>
+
+<!-- JavaScript для валидации и Smartmenus -->
+<script src="js/jquery.smartmenus.min.js"></script>
+<script src="js/jquery.validationEngine.js"></script>
+<script src="js/jquery.validationEngine-ru.js"></script>
+<script src="js/custom_rules.js"></script>
+
+<script>
+$(document).ready(function() {
+    // Инициализация Smartmenus
+    $('#main-menu').smartmenus({
+        subMenusSubOffsetX: 1,
+        subMenusSubOffsetY: -8,
+        effect: 'slide',
+        animationDuration: 200,
+        markCurrentItem: true,
+        autoCollapseMode: 'all'
+    });
+
+    // Инициализация валидации формы
+    $("#registrationForm").validationEngine({
+        promptPosition: "topRight",
+        scroll: false,
+        autoHidePrompt: true,
+        autoHideDelay: 3000,
+        showOneMessage: true,
+        success: function() {
+            alert('Регистрация прошла успешно!');
+        }
+    });
+});
+</script>
+</body>
+</html>

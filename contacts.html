@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+	<!-- jQuery -->
+	<script src="js/jquery.min.js"></script>
+
+	<!-- Smartmenus CSS -->
+	<link href="css/sm-core-css.css" rel="stylesheet">
+
+	<!-- Smartmenus JS -->
+	<script src="js/jquery.smartmenus.min.js"></script>
+<script src="js/jquery.smartmenus.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты | Агентство недвижимости "Крыша"</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Агентство недвижимости "Крыша"</h1>
+        <nav class="navbar">
+        <div class="container">
+            <ul id="main-menu">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="catalog.html">Каталог</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+				<li><a href="registration.html">Регистрация</a></li>
+            </ul>
+        </div>
+    </nav>
+    </header>
+
+    <main>
+        <section class="contacts">
+            <h2>Свяжитесь с нами</h2>
+
+            <div class="contact-info">
+                <div class="address">
+                    <h3>Адрес:</h3>
+                    <p>г. Новочеркасск, пр. Ермака, д. 106</p>
+                </div>
+				
+<div class="phone">
+    <h3>Телефон:</h3>
+    <p>+7 (863) 555-12-34</p>
+</div>
+
+<div class="email">
+    <h3>Email:</h3>
+    <p>info@krysha-realt.ru</p>
+</div>
+
+<div class="working-hours">
+    <h3>График работы:</h3>
+    <p>Пн-Пт: 9:00-18:00</p>
+    <p>Сб: 10:00-15:00</p>
+    <p>Вс: выходной</p>
+</div>
+
+<div class="map">
+    <h3>Мы на карте:</h3>
+    <img src="img/map.png" alt="Расположение агентства недвижимости 'Крыша'">
+</div>
+
+<section class="feedback">
+    <h2>Обратная связь</h2>
+    <form action="send_feedback.php" method="post">
+        <div class="form-group">
+            <label for="name">Ваше имя:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Телефон:</label>
+            <input type="tel" id="phone" name="phone">
+        </div>
+
+        <div class="form-group">
+            <label for="message">Сообщение:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+        </div>
+
+        <button type="submit">Отправить</button>
+    </form>
+</section>
+</main>
+
+<footer>
+    <p>© 2025 Агентство недвижимости "Крыша"</p>
+</footer>
+<script>
+	$(document).ready(function() {
+		$('#main-menu').smartmenus({
+			subMenusSubOffsetX: 1,
+			subMenusSubOffsetY: -8,
+			effect: 'slide',
+			animationDuration: 200,
+			markCurrentItem: true,
+			autoCollapseMode: 'all'
+		});
+	});
+</script>
+</body>
+</html>

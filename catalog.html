@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- jQuery UI -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <!-- Smartmenus CSS -->
+    <link href="css/sm-core-css.css" rel="stylesheet">
+    <!-- Smartmenus JS -->
+    <script src="js/jquery.smartmenus.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог | Агентство недвижимости "Крыша"</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .filters {
+            margin: 20px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .filter-group {
+            margin-bottom: 15px;
+        }
+        #price-range {
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        #sorting-options {
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Агентство недвижимости "Крыша"</h1>
+        <nav class="navbar">
+        <div class="container">
+            <ul id="main-menu">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="catalog.html">Каталог</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+				<li><a href="registration.html">Регистрация</a></li>
+            </ul>
+        </div>
+    </nav>
+    </header>
+
+    <main>
+        <h2>Каталог недвижимости</h2>
+        
+        <!-- Блок фильтров -->
+        <div class="filters">
+            <div class="filter-group">
+                <label>Диапазон цены:</label>
+                <div id="price-slider"></div>
+                <div id="price-range"></div>
+            </div>
+            
+            <div class="filter-group">
+                <label>Сортировка:</label>
+                <select id="sorting-options">
+                    <option value="default">По умолчанию</option>
+                    <option value="price_asc">Цена ↑</option>
+                    <option value="price_desc">Цена ↓</option>
+                    <option value="area_asc">Площадь ↑</option>
+                    <option value="area_desc">Площадь ↓</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="property-list">
+            <div class="property-card">
+                <img src="img/apartment1.png" alt="Квартира в центре">
+                <div class="property-info">
+                    <h3>Квартира в центре</h3>
+                    <p>Адрес: ул. Платовская, 45</p>
+                    <p>Площадь: 80 м²</p>
+                    <p>Комнат: 3</p>
+                    <p>Цена: 8 500 000 руб.</p>
+                    <button>Подробнее</button>
+                </div>
+            </div>
+
+            <div class="property-card">
+                <img src="img/house1.png" alt="Частный дом">
+                <div class="property-info">
+                    <h3>Частный дом</h3>
+                    <p>Адрес: ул. Садовая, 12</p>
+                    <p>Площадь: 150 м²</p>
+                    <p>Участок: 6 соток</p>
+                    <p>Цена: 12 000 000 руб.</p>
+                    <button>Подробнее</button>
+                </div>
+            </div>
+
+            <div class="property-card">
+                <img src="img/studio1.png" alt="Студия">
+                <div class="property-info">
+                    <h3>Студия</h3>
+                    <p>Адрес: пр. Центральный, 5</p>
+                    <p>Площадь: 35 м²</p>
+                    <p>Цена: 4 200 000 руб.</p>
+                    <button>Подробнее</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 Агентство недвижимости "Крыша"</p>
+    </footer>
+    <script>
+        $(function() {
+            // Инициализация слайдера
+            $("#price-slider").slider({
+                range: true,
+                min: 4200000,
+                max: 12000000,
+                values: [4200000, 12000000],
+                slide: function(event, ui) {
+                    $("#price-range").html(
+                        ui.values[0].toLocaleString() + " руб. - " + 
+                        ui.values[1].toLocaleString() + " руб."
+                    );
+                    filterProperties(ui.values);
+                }
+            });
+            
+            // Инициализация отображения диапазона
+            $("#price-range").html(
+                $("#price-slider").slider("values", 0).toLocaleString() + " руб. - " +
+                $("#price-slider").slider("values", 1).toLocaleString() + " руб."
+            );
+
+            // Обработчик сортировки
+            $("#sorting-options").change(function() {
+                sortProperties($(this).val());
+            });
+
+            // Функция фильтрации
+            function filterProperties(values) {
+                $(".property-card").each(function() {
+                    const price = parseInt(
+                        $(this).find("p:contains('Цена:')").text()
+                            .replace(/\D/g, ''),
+                        10
+                    );
+                    $(this).toggle(price >= values[0] && price <= values[1]);
+                });
+            }
+
+            // Функция сортировки
+            function sortProperties(criteria) {
+                const container = $(".property-list");
+                const items = container.find(".property-card").detach();
+                
+                items.sort(function(a, b) {
+                    const getValue = (elem, type) => {
+                        const text = $(elem).find(`p:contains('${type === 'price' ? 'Цена' : 'Площадь'}')`).text();
+                        return parseInt(text.replace(/\D/g, ''), 10) || 0;
+                    };
+
+                    const aVal = criteria.startsWith('price') ? getValue(a, 'price') : getValue(a, 'area');
+                    const bVal = criteria.startsWith('price') ? getValue(b, 'price') : getValue(b, 'area');
+
+                    return criteria.endsWith('asc') ? aVal - bVal : bVal - aVal;
+                });
+
+                if(criteria === 'default') {
+                    items.sort((a,b) => $(a).index() - $(b).index());
+                }
+
+                container.append(items);
+            }
+        });
+    </script>
+</body>
+</html>
